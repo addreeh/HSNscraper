@@ -34,7 +34,7 @@ In the script, only two products are considered, which are the ones added to the
 As you can see, each product must have specific information.
 ![image](https://github.com/addreeh/HSNscrapper/assets/74270582/a29e9c35-7ab9-45d4-8dd3-8d2b85139c90)
 
-To obtain this data, you will need to access the browser's developer tool (F12).
+To obtain these data, you will need to access the browser's developer tool (F12).
 ![image](https://github.com/addreeh/HSNscrapper/assets/74270582/e6bb66ce-49e6-48c6-acb1-3d293780eead)
 
 Once you have obtained the data, you simply need to insert a new product into the script.
