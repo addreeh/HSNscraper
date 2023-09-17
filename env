@@ -1,4 +1,4 @@
 TOKEN = telegrambottoken
-HSN_CHAT_IDS="[id1, id2, id3]"
+HSN_CHAT_IDS = "[id1, id2, id3]"
 USERLOGIN = email@gmail.com
 PASSWORD = password
