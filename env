@@ -1,0 +1,4 @@
+TOKEN = telegrambottoken
+CHAT_IDS="[id1, id2, id3]"
+USERLOGIN = email@gmail.com
+PASSWORD = password
