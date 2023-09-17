@@ -1,6 +1,6 @@
 # HSNscrapper
 
-A python web scraping script crafted to automate data extraction from the HSN shopping cart.
+A python web scraping script crafted to automate data extraction from the HSN shopping cart. If you want to receive alerts, you can join this [Telegram channel](https://t.me/hsnscrapper) where the price of the products is checked daily.
 
 ## Installation
 
