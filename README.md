@@ -1,6 +1,6 @@
 # HSNscrapper
 
-A python web scraping script crafted to automate data extraction from the [HSN](https://www.hsn.com/) shopping cart. If you want to receive alerts, you can join this [Telegram channel](https://t.me/hsnscrapper) where the price of the products is checked daily. This is what the alerts channel looks like.
+A python web scraping script crafted to automate data extraction from the [HSN](https://www.hsnstore.com/) shopping cart. If you want to receive alerts, you can join this [Telegram channel](https://t.me/hsnscrapper) where the price of the products is checked daily. This is what the alerts channel looks like.
 ![image](https://github.com/addreeh/HSNscrapper/assets/74270582/7362f1a3-a145-4da6-aa5e-ae86bd261613)
 
 
