@@ -6,7 +6,7 @@ A python web scraping script crafted to automate data extraction from the [HSN](
 
 
 ## Installation
-
+To use the script you need to have installed Firefox and Python.
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install requirements.
 
 ```bash
@@ -14,6 +14,7 @@ pip install -r requirements.txt
 ```
 
 This script is ready to work and store data in a MongoDB database. If you want to use the same system, you will need to install [MongoDB](https://www.mongodb.com/docs/manual/installation/). If you only want to display the current prices of the products, you can use NoDB script.
+
 
 ## Usage
 The command to use Python will depend on the operating system; typically, in Ubuntu, *python3* is used, and in Windows, *python*. However, it will all depend on your Python installation on the system.
