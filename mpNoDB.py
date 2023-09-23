@@ -1,9 +1,10 @@
 #######################################################
 #                                                     #
-#                 HSNscrapper                         #
+#                 MPscrapper                          #
 #                 Author: Adrián Pino                 #
 #                                                     #
 #######################################################
+
 
 # Import necessary libraries for the script
 from selenium import webdriver
@@ -25,7 +26,7 @@ load_dotenv()
 userlogin = os.getenv('USERLOGIN')
 password = os.getenv('PASSWORD')
 token = os.getenv('TOKEN')
-chat_ids_json = os.environ.get('HSN_CHAT_IDS')
+chat_ids_json = os.environ.get('MP_CHAT_IDS')
 chat_ids = json.loads(chat_ids_json)
 
 # Define the Telegram API endpoint for sending messages
@@ -61,11 +62,10 @@ def login(driver):
         None
     """
     try:
-        driver.get('https://www.hsnstore.com/customer/account/login/')
-        driver.find_element(By.CSS_SELECTOR, '.cookiebar-close').click()
-        driver.find_element(By.CSS_SELECTOR, 'input[name="login[username]"]').send_keys(userlogin)
+        driver.get('https://www.myprotein.es/login.jsp?returnTo=https://www.myprotein.es/my.basket')
+        driver.find_element(By.CSS_SELECTOR, 'input[type="email"]').send_keys(userlogin)
         driver.find_element(By.CSS_SELECTOR, 'input[type="password"]').send_keys(password)
-        driver.find_element(By.CSS_SELECTOR, 'button#send2.btn.btn-orange-transparent.customligin_button').click()
+        driver.find_element(By.CSS_SELECTOR, 'button[type="submit"]').click()
     except Exception as e:
         msg = (f"Error in login: {e}")
         print(msg)
@@ -89,24 +89,15 @@ def get_data():
         login(driver)
 
         time.sleep(10)
-        driver.get("https://www.hsnstore.com/checkout/cart/")
-        time.sleep(10)
 
         products = []
 
         product1 = {
-            "name": driver.find_element(By.CSS_SELECTOR, "div.item:nth-of-type(1) .product-name a").text.upper().split(" - ")[0],
-            "price": driver.find_element(By.CSS_SELECTOR, "div.item:nth-of-type(1) .col-sm-7 span.price").text.replace(" ", ""),
-            "url": "https://www.hsnstore.com/marcas/sport-series/evowhey-protein-2-0-2kg-chocolate"
+            "name": driver.find_element(By.CSS_SELECTOR, "p.athenaBasket_itemName").text.upper().split(" - ")[0] + " 2,5KG",
+            "price": driver.find_element(By.CSS_SELECTOR, "div.athenaBasket_bodyItem.athenaBasket_bodyItem-subTotal").text.replace(" ", ""),
+            "url": "https://www.myprotein.es/nutricion-deportiva/impact-whey-protein/10530943.html"
         }
         products.append(product1)
-
-        product2 = {
-            "name": driver.find_element(By.CSS_SELECTOR, "div:nth-of-type(2) .product-name a").text.upper().split(" - ")[0],
-            "price": driver.find_element(By.CSS_SELECTOR, "div:nth-of-type(2) .col-xs-12 .col-xs-12 .cart-price span").text.replace(" ", ""),
-            "url": "https://www.hsnstore.com/marcas/sport-series/evocasein-2-0-caseina-micelar-digezyme-2kg-chocolate"
-        }
-        products.append(product2)
 
         driver.quit()
 
@@ -128,10 +119,11 @@ if __name__ == '__main__':
             product_name = product["name"]
             product_price = product["price"]
             product_url = product["url"]
-            brand = "HSN"
+            brand = "MP"
+
             # Check if product information is available
             if product_name and product_price and product_url:
-                # Create a message to notify about the price
+                # Create a message to notify about the price change
                 msg = f"*{brand} |* [{product_name}]({product_url}) *| {product_price}*"
                 print(msg)
                 telegramMSG(msg)
