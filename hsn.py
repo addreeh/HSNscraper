@@ -104,6 +104,9 @@ def get_data():
         driver.get("https://www.hsnstore.com/checkout/cart/")
         time.sleep(10)
 
+        driver.execute_script("window.scrollTo(0, 350);")
+        time.sleep(10)
+
         products = []
 
         product1 = {

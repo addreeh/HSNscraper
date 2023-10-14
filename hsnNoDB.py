@@ -92,6 +92,9 @@ def get_data():
         driver.get("https://www.hsnstore.com/checkout/cart/")
         time.sleep(10)
 
+        driver.execute_script("window.scrollTo(0, 350);")
+        time.sleep(10)
+
         products = []
 
         product1 = {
@@ -103,13 +106,13 @@ def get_data():
 
         product2 = {
             "name": driver.find_element(By.CSS_SELECTOR, "div:nth-of-type(2) .product-name a").text.upper().split(" - ")[0],
-            "price": driver.find_element(By.CSS_SELECTOR, "div:nth-of-type(2) .col-xs-12 .col-xs-12 .cart-price span").text.replace(" ", ""),
+            "price": driver.find_element(By.CSS_SELECTOR, 'div:nth-of-type(2) .col-xs-12 .col-xs-12 .cart-price span').text.replace(" ", ""),
             "url": "https://www.hsnstore.com/marcas/sport-series/evocasein-2-0-caseina-micelar-digezyme-2kg-chocolate"
         }
         products.append(product2)
 
         driver.quit()
-
+        print(products)
         return products
     except Exception as e:
         msg = (f"Error while fetching data: {e}")
